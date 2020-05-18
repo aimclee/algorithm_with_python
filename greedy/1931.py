@@ -1,33 +1,34 @@
-import sys
-n = int(sys.stdin.readline())
-time = []
-startTime=[]
-endTime=[]
-num = []
-cnt = 0
+# import sys
+# n = int(sys.stdin.readline())
+# time = []
+# startTime=[]
+# endTime=[]
+# num = []
+# cnt = 0
 
 #입력된 값을 받고 리스트에 더하는 작업
-for i in range(0,n):
-    start, end = map(int, sys.stdin.readline().split())
-    startTime.append(start)
-    endTime.append(end)
-    time.append([start,end])
-    time.sort()
+# for i in range(0,n):
+#     start, end = map(int, sys.stdin.readline().split())
+#     startTime.append(start)
+#     endTime.append(end)
+#     time.append([start,end])
+#     time.sort()
 
 # print(time) # [[0, 6], [1, 4], [2, 13], [3, 5], [3, 8], [5, 7], [5, 9], [6, 10], [8, 11], [8, 12], [12, 14]]
 # first_start = time[0][0]
 # first_end = time[0][1]
-for j in range(0,n):
-    start = time[j][0]
-    end = time[j][1]
-    for f, s in time:
-        if start == f:
-            break
-        elif start<f & end<=s:
-            cnt+=1
-        num.append(cnt)
-num.sort(reverse=True)
-print(num)
+
+# for j in range(0,n):
+#     start = time[j][0]
+#     end = time[j][1]
+#     for f, s in time:
+#         if start == f:
+#             break
+#         elif start<f & end<=s:
+#             cnt+=1
+#         num.append(cnt)
+# num.sort(reverse=True)
+# print(num)
 
 # for j in range(0,n):
 #     start = time[n][n]
@@ -76,3 +77,26 @@ print(num)
 # zipped = list(zip(startTime,endTime))
 # print(zipped.sort())
 
+import sys
+
+N = int(input())
+meeting = []
+for _ in range(N):
+    meeting.append(list(map(int, sys.stdin.readline().split())))
+
+meeting = sorted(meeting, key = lambda x: [x[1], x[0]]) 
+# x가 매개변수, return값이 x[0], x[1]이다.
+# x[0]을 기준으로 해서 정렬된다.
+
+print(meeting)
+
+
+#빨리 끝나는 것 중 가장 빨리 시작하는 순서대로 더해준다.
+max_meeting = 0
+start = 0
+for meet in meeting:
+    if meet[0] >= start: # meet[0] = 1
+        start = meet[1] # meet[1](start) = 7
+        max_meeting += 1 # 2
+        
+print(max_meeting)
