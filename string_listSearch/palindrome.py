@@ -33,12 +33,31 @@ for char in string_list:
             print('#%d NO' % (i+1))
             cnt=0
 
-    #     for j in char:
-    #         char_list.append(j)
-        
-    # for idx, char in enumerate(string_list):
-    #     for j in char:
-    #         char_list.append(j)
-        # string_list.append(char)
-# print(string_list)
-# print(char_list)
+
+
+# 다른 풀이 1 -> 면접에서는 이렇게 한다.
+
+n = int(input())
+for i in range(n):
+    s=input()
+    s=s.upper()
+    size = len(s)
+    for j in range(size//2):
+        if s[j] != s[-(j+1)]:
+            print("#%d NO" %(i+1))
+            break
+    else:
+        print("#%d YES" %(i+1))
+
+
+# 다른 풀이 2 -> pythonic한 코드
+n = int(input())
+for i in range(n):
+    s=input()
+    s=s.upper()
+    if s==s[::-1]: #s[::-1]은 s문자열을 거꾸로 뒤집은 값이다.
+        print("#%d YES" %(i+1))
+    else: 
+        print("#%d NO" %(i+1))
+
+
