@@ -5,7 +5,7 @@ appletree_list_by_row =[]
 for i in range(n):
     appletrees = list(map(int, input().split()))
     appletree_list_by_row.append(appletrees)
-# print(appletree_list_by_row)
+
 
 
 #가운데 값을 먼저 더한다.
@@ -19,38 +19,26 @@ for i in range(n):
 cnt=0
 bottom_idx=1
 for idx, j in enumerate(appletree_list_by_row):
-    # print(idx)
-    # print(j)
+
     if idx == 0:
         cnt+=j[((n-1)//2)] #첫번째 줄의 가운데 값
-        # print(cnt)
         continue
-    # print(cnt)
-    elif idx == ((n-1)//2):
+
+    # 가운데줄
+    elif idx == ((n-1)//2): 
         # (idx == (n-1)//2): -> 533
         # ((n-1)//2)->533
         # n-1//2 -> 353
 
-        # for k in j:
-        #     cnt+=k
         cnt+=sum(j)
-        # cnt+=sum(appletree_list_by_row[idx]) # j list에 저장된 모든 값을 더한다.(정가운데줄)
-        # print(j)
-        # print(cnt)
+
     elif idx == n-1:
         cnt+=j[((n-1)//2)] # 마지막 줄의 가운데 값
-        # print(cnt)
+
     else:   
         cnt+=j[((n-1)//2)]
 
-        #idx가 1씩 증가하면 그만큼 뺀다.
-        # while idx<n:
-        #     if idx>1:
-        #         idx+=1
         if idx>((n-1)//2):
-            '''
-            이 부분 수정 
-            '''
             
             for m in range(1, idx-(2*bottom_idx)+1): # -(2*1), -(2*2) ...
                 cnt=cnt+j[((n-1)//2)-m]
@@ -62,11 +50,5 @@ for idx, j in enumerate(appletree_list_by_row):
             for k in range(1,idx+1):
                 cnt=cnt+j[((n-1)//2)-k]
                 cnt=cnt+j[((n-1)//2)+k]
-        # for k in range(1, (idx*2)+1, 1): #k=1~4
-        #     if k == ((n-1)//2):
-        #         break
-        #     cnt=cnt+j[((n-1)//2)-k]
-        #     cnt=cnt+j[((n-1)//2)+k]
-    # print(cnt)
 print(cnt)
 
